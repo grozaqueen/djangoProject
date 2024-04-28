@@ -1,6 +1,10 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<p><a href="{% url 'quality_control:update_bug' bug.id %}">Изменить баг</a></p>
+
+<p><a href="{% url 'quality_control:delete_bug' bug.id %}" onclick="return confirm('Вы уверены?')">Удалить баг</a></p>
+
 <h1>Детали бага {{ bug.id }}</h1>
 <h2>Информация о баге</h2>
 <h3>Название</h3>

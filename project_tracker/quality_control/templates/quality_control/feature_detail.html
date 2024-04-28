@@ -1,6 +1,10 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<p><a href="{% url 'quality_control:update_feature' feature.id %}">Изменить фичу</a></p>
+
+<p><a href="{% url 'quality_control:delete_feature' feature.id %}" onclick="return confirm('Вы уверены?')">Удалить фичу</a></p>
+
 <h1>Детали фичи {{ feature.id }}</h1>
 <h2>Информация о фиче</h2>
 <h3>Название</h3>
