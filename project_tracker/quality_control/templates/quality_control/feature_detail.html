@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>Детали фичи {{ feature.id }}</h1>
+<h2>Информация о фиче</h2>
+<h3>Название</h3>
+<p>{{ feature.title }}</p>
+<h3>Описание</h3>
+<p>{{ feature.description }}</p>
+<h3>Статус</h3>
+<p>{{ feature.status }}</p>
+<h3>Приоритет</h3>
+<p>{{ feature.priority }}</p>
+<h2>Информация о связанном проекте</h2>
+<h3>Название проекта</h3>
+<p>{{ feature.project.name }}</p>
+<h3>Описание проекта</h3>
+<p>{{ feature.project.description }}</p>
+<h2>Информация о связанной задаче</h2>
+        {% if feature.task is not None %}
+            <h3>Название задачи</h3>
+            <p>{{ feature.task.name }}</p>
+            <h3>Описание задачи</h3>
+            <p>{{ feature.task.description }}</p>
+        {% else %}
+            <p>Нет связанной задачи</p>
+        {% endif %}
+{% endblock %}
