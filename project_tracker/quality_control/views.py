@@ -21,6 +21,31 @@ def bug_detail(request, bug_id):
     bug = get_object_or_404(BugReport, id=bug_id)
     return render(request, 'quality_control/bug_detail.html', {'bug': bug})
 
+from django.shortcuts import render, redirect
+from .forms import BugReportForm
+
+def create_bug(request):
+    if request.method == 'POST':
+        form = BugReportForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('quality_control:bugs_list')
+    else:
+        form = BugReportForm()
+    return render(request, 'quality_control/bug_report_form.html', {'form':form})
+
+from .forms import FeatureRequestForm
+
+def create_feature(request):
+    if request.method == 'POST':
+        form = FeatureRequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('quality_control:feature_list')
+    else:
+        form = FeatureRequestForm()
+    return render(request, 'quality_control/feature_request_form.html', {'form':form})
+
 from django.views import View
 class IndexView(View):
     def get(self, request, *args, **kwargs):

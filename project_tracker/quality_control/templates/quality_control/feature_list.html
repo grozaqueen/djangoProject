@@ -2,6 +2,7 @@
 
 {% block content %}
     <h1>Список фич</h1>
+    <p><a href="{% url 'quality_control:create_feature' %}">Создать новую фичу</a></p>
     <ul>
         {% for feature in feature_list %}
             <li><a href="{% url 'quality_control:feature_detail' feature.id %}">{{ feature.title }}</a></li>
